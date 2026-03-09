@@ -39,6 +39,45 @@
    .hover-glimmer:hover::before {
       left: 100%;
        }
+
+    * {
+  cursor: none !important;
+}
+
+#customCursor{
+  width:18px;
+  height:18px;
+  border:2px solid #FFD700;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%, -50%);
+  z-index:9999;
+  transition: transform 0.08s ease;
+  box-shadow:0 0 10px #FFD700;
+}
+
+.animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: aparecer 0.8s ease forwards;
+}
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-15px); }
+}
+
+.fade-out {
+    animation: fadeOutDown 0.5s ease-in forwards !important;
+}
           </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -327,17 +366,18 @@
         <div
           class="pointer-events-none absolute left-6 right-6 top-1/2 -translate-y-1/2 z-50 hidden w-[calc(100%-3rem)] flex-row items-center justify-center lg:flex"
         >
-          <nav class="flex flex-row items-center justify-center gap-6">
+          <nav class="animate flex flex-row items-center justify-center gap-6">
             <a
               href="#about"
               class="pointer-events-auto flex flex-row items-center gap-2 text-sm font-medium text-hydra-muted-foreground transition-colors duration-300 hover:text-white"
               >Sobre Nós</a
             ><a
-              href="#features"
+             href="recomendacoes.html"
               class="pointer-events-auto flex flex-row items-center gap-2 text-sm font-medium text-hydra-muted-foreground transition-colors duration-300 hover:text-white"
               >StreamHub</a
             ><a
               href="https://github.com/Taldook/StreamHub"
+              target="_blank"
               class="pointer-events-auto flex flex-row items-center gap-2 text-sm font-medium text-hydra-muted-foreground transition-colors duration-300 hover:text-white"
               >GitHub<span
                 class="flex flex-row items-center gap-1 rounded-full bg-secondary px-2 text-[11px] font-light"
@@ -480,8 +520,8 @@
               class="mx-auto flex max-w-screen-sm flex-col items-center gap-4 text-center"
             >
               <a
-                class="ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border-hydra-border hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-full border bg-secondary/50 text-sm font-normal text-hydra-muted-foreground"
-                href="https://github.com/Taldook/StreamHub/releases/tag/v1.0.0"
+                class="animate ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border-hydra-border hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-full border bg-secondary/50 text-sm font-normal text-hydra-muted-foreground"
+                href="https://github.com/Taldook/StreamHub/releases/tag/1.0.3"
                 target="_blank"
                 ><img
                   alt="Asterisk"
@@ -492,25 +532,25 @@
                   data-nimg="1"
                   style="color: transparent"
                   src="images/icons/asterisk.svg"
-                />v1.0.3 just released!</a
+                />v1.0.4 just released!</a
               >
               <h1 class="text-[40px] font-bold tracking-[-1.6px] lg:hidden">
-                StreamHub
+              StreamHub
               </h1>
               <p class="text-sm text-hydra-muted-foreground lg:hidden">
                Assista, explore novidades e aproveite seus filmes, séries e documentários favoritos em uma única plataforma.
               </p>
               <h1
-                class="hidden text-[40px] font-bold tracking-[-1.6px] lg:block"
+                class="animate hidden text-[40px] font-bold tracking-[-1.6px] lg:block"
               >
                Tudo o que você ama assistir, em um só lugar.
               </h1>
-              <p class="hidden max-w-lg text-hydra-muted-foreground lg:block">
+              <p class="animate hidden max-w-lg text-hydra-muted-foreground lg:block">
                O StreamHub reúne tudo o que você ama assistir em uma única plataforma, oferecendo uma experiência simples, rápida e envolvente.
               </p>
               <div class="my-4 flex flex-col gap-4 lg:flex-row">
                   <a
-                  class="hover-glimmer ring-offset-background focus-visible:ring-ring items-center justify-center whitespace-nowrap text-sm transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-md hover:shadow-lg h-12 rounded-md px-6 pointer-events-auto hidden gap-3 font-bold lg:flex"
+                  class="animate hover-glimmer ring-offset-background focus-visible:ring-ring items-center justify-center whitespace-nowrap text-sm transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-md hover:shadow-lg h-12 rounded-md px-6 pointer-events-auto hidden gap-3 font-bold lg:flex"
                   style="background: linear-gradient(90deg, #FFD700, #FFB300, #FFD700); color: black; box-shadow: 0 0 15px rgba(255,215,0,0.6);"
                   href="https://ofc-streamhub.web.app/"
                   ><img
@@ -523,7 +563,7 @@
                     style="color: transparent"
                     src="images/icons/windows.svg"
                   />Acessar StreamHub</a><a
-                  class="ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap text-sm transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background border-hydra-border hover:bg-accent hover:text-accent-foreground border h-12 rounded-md px-6 gap-3 font-bold"
+                  class="animate ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap text-sm transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background border-hydra-border hover:bg-accent hover:text-accent-foreground border h-12 rounded-md px-6 gap-3 font-bold"
                   href="https://github.com/Taldook/StreamHub"
                   target="_blank"
                   ><img
@@ -555,14 +595,14 @@
                       <div
                         class="w-fit transition duration-200 ease-linear relative"
                       >
-         <div id="card3d-wrapper" style="perspective: 1000px; display: inline-block; position: relative; z-index: 50;">
-  <img 
-    id="card3d" 
-    src="images/Stream.avif" 
-    alt="StreamHub" 
-    style="transition: transform 0.1s ease-out; will-change: transform; pointer-events: none;" 
-  />
-</div>
+                      <div id="card3d-wrapper" style="perspective: 1000px; display: inline-block; position: relative; z-index: 50;">
+                          <img 
+                            id="card3d" 
+                            src="images/Stream.avif" 
+                            alt="StreamHub" 
+                            style="border-radius: 16px; transition: transform 0.1s ease-out; will-change: transform; pointer-events: none;" 
+                          />
+                        </div>
                         <div
                         class="group flex size-full absolute inset-0 cursor-pointer flex-col items-center justify-center whitespace-nowrap text-4xl opacity-[0.03] shadow-2xl blur-lg transition-all duration-300"
                         >
@@ -686,7 +726,7 @@
               </div>
               <div>
                <a             
-                  class="hover-glimmer ring-offset-background focus-visible:ring-ring items-center justify-center whitespace-nowrap text-sm transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-md hover:shadow-lg h-12 rounded-md px-6 pointer-events-auto hidden gap-3 font-bold lg:flex"
+                  class="animate hover-glimmer ring-offset-background focus-visible:ring-ring items-center justify-center whitespace-nowrap text-sm transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-md hover:shadow-lg h-12 rounded-md px-6 pointer-events-auto hidden gap-3 font-bold lg:flex"
                   style="background: linear-gradient(90deg, #FFD700, #FFB300, #FFD700); color: black; box-shadow: 0 0 15px rgba(255,215,0,0.6);"
                   href="https://portfolio-rafael-melo.pages.dev/"
                   ><img
@@ -1360,13 +1400,13 @@ let scrollTimeout;
 
 window.addEventListener("scroll", () => {
 
-  // esconde enquanto está rolando
+ 
   header.style.transform = "translateY(-100%)";
 
-  // limpa o tempo anterior
+  
   clearTimeout(scrollTimeout);
 
-  // quando parar de rolar aparece de novo
+
   scrollTimeout = setTimeout(() => {
     header.style.transform = "translateY(0)";
   }, 200);
@@ -1421,6 +1461,65 @@ function autoMove() {
 
 autoMove();
 
+});
+</script>
+
+<div id="customCursor"></div>
+
+<script>
+const cursor = document.getElementById("customCursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+const links = document.querySelectorAll("a, button");
+
+links.forEach(link => {
+  link.addEventListener("mouseenter", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1.8)";
+  });
+
+  link.addEventListener("mouseleave", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+  });
+});
+</script>
+
+<script>
+const elementos = document.querySelectorAll(".animate");
+
+elementos.forEach((el, i) => {
+  el.style.animationDelay = (i * 0.2) + "s";
+});
+</script>
+
+<script>
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // Pega o texto visível do link
+        const linkContent = this.textContent.toLowerCase().trim();
+        
+        // Palavras-chave que disparam a animação
+        const triggers = ['streamhub', 'portfolio', 'portfólio', 'acessar'];
+
+        // Verifica se o botão clicado contém uma das palavras
+        const shouldAnimate = triggers.some(word => linkContent.includes(word));
+
+        if (shouldAnimate) {
+            e.preventDefault(); // Para o carregamento instantâneo
+            const destination = this.href;
+
+            // Adiciona a classe de sumiço no body
+            document.body.classList.add('fade-out');
+
+            // Espera a animação de 0.5s acabar e redireciona para a URL externa
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 500);
+        }
+    });
 });
 </script>
 
