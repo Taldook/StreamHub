@@ -77,7 +77,85 @@
 
 .fade-out {
     animation: fadeOutDown 0.5s ease-in forwards !important;
+
 }
+
+
+#toast-container {
+  position: fixed;
+  top: 60px;      
+  right: -2px;     
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 12px 20px;
+  
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start;
+  
+  gap: 12px;
+  min-width: 220px;
+  max-width: 350px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  
+  animation: toastSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin: 0; 
+}
+
+
+#languageMenu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-10px);
+  pointer-events: none;
+  display: block; 
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+#languageMenu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+
+@keyframes toastSlideDown {
+  from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.toast.fade-out {
+  opacity: 0;
+  transform: scale(0.9) translateY(-10px);
+  transition: all 0.4s ease;
+}
+
           </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -412,11 +490,10 @@
             /></a>
             <div class="flex flex-row items-center gap-2">
 <div class="relative">
-  
   <button
     id="languageBtn"
     type="button"
-    class="flex h-10 w-10 items-center justify-center rounded-md border border-hydra-border bg-transparent"
+    class="flex h-10 w-10 items-center justify-center rounded-md border border-hydra-border bg-transparent hover:bg-white/5 transition-colors"
     aria-label="Toggle language"
   >
     <img
@@ -429,24 +506,27 @@
 
   <div
     id="languageMenu"
-    class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max rounded-md border border-hydra-border bg-background p-1 shadow-xl z-50 hidden transition-all duration-150"
+    class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max rounded-md border border-hydra-border bg-background p-1 shadow-xl z-50"
   >
     <button
       type="button"
-      class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-muted rounded"
-      onclick="alert('Idioma alterado para Português (teste)'); this.parentElement.classList.add('hidden')"
+      class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-muted rounded transition-colors"
+      onclick="changeLanguage('Português')"
     >
       Português
     </button>
 
     <button
       type="button"
-      class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-muted rounded"
-      onclick="alert('Language changed to English (test)'); this.parentElement.classList.add('hidden')"
+      class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-muted rounded transition-colors"
+      onclick="changeLanguage('English')"
     >
       English
     </button>
   </div>
+</div>
+
+<div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2">
             </div>
           </div>
           <div
@@ -711,15 +791,15 @@
                 class="pointer-events-none mx-auto flex max-w-lg flex-col gap-4"
               >
                 <p
-                  class="pointer-events-auto text-4xl font-medium sm:text-5xl md:text-6xl"
+                  class="animate pointer-events-auto text-4xl font-medium sm:text-5xl md:text-6xl"
                 >
                    What is StreamHub?
                 </p>
                 <div class="z-10 flex flex-col gap-4">
-                  <p class="pointer-events-auto text-sm md:text-base">
+                  <p class="animate pointer-events-auto text-sm md:text-base">
                     StreamHub é uma plataforma de streaming e entretenimento que oferece uma experiência completa para os fãs de jogos e conteúdo digital. Ele permite que os usuários assistam a transmissões ao vivo, participem de comunidades e desfrutem de uma ampla variedade de conteúdos em um único lugar.
                   </p>
-                  <p class="pointer-events-auto text-sm md:text-base">
+                  <p class="animate pointer-events-auto text-sm md:text-base">
                      Junte-se a milhares de espectadores que já descobriram uma maneira melhor de viver o entretenimento.
                   </p>
                 </div>
@@ -1256,7 +1336,7 @@
               class="mx-auto mb-2 flex flex-col items-center justify-center gap-4 text-center lg:mb-8"
             >
               <div
-                class="flex flex-row items-center gap-3 rounded-full border border-hydra-border px-4 py-2"
+                class="animate flex flex-row items-center gap-3 rounded-full border border-hydra-border px-4 py-2"
               >
                 <span
                   ><img
@@ -1370,8 +1450,8 @@ wrapper.addEventListener("mousemove", (e) => {
   const centerX = rect.width / 2;
   const centerY = rect.height / 2;
 
-  const rotateX = -(y - centerY) / 100;
-  const rotateY = (x - centerX) /  100;
+  const rotateX = -(y - centerY) / 130;
+  const rotateY = (x - centerX) /  130;
 
   card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 });
@@ -1498,23 +1578,23 @@ elementos.forEach((el, i) => {
 <script>
 document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', function(e) {
-        // Pega o texto visível do link
+       
         const linkContent = this.textContent.toLowerCase().trim();
         
-        // Palavras-chave que disparam a animação
+      
         const triggers = ['streamhub', 'portfolio', 'portfólio', 'acessar'];
 
-        // Verifica se o botão clicado contém uma das palavras
+       
         const shouldAnimate = triggers.some(word => linkContent.includes(word));
 
         if (shouldAnimate) {
-            e.preventDefault(); // Para o carregamento instantâneo
+            e.preventDefault(); 
             const destination = this.href;
 
-            // Adiciona a classe de sumiço no body
+           
             document.body.classList.add('fade-out');
 
-            // Espera a animação de 0.5s acabar e redireciona para a URL externa
+            
             setTimeout(() => {
                 window.location.href = destination;
             }, 500);
@@ -1522,6 +1602,83 @@ document.querySelectorAll('a').forEach(link => {
     });
 });
 </script>
+
+<script>
+window.addEventListener('pageshow', function(event) {
+
+    if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+        
+        document.body.classList.remove('fade-out');
+    }
+});
+</script>
+
+
+<script>
+
+{
+  const langBtn = document.getElementById('languageBtn');
+  const langMenu = document.getElementById('languageMenu');
+  
+  
+  let isToastActive = false;
+
+  if (langBtn && langMenu) {
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+      langMenu.classList.remove('active');
+    });
+
+    langMenu.addEventListener('click', (e) => e.stopPropagation());
+  }
+
+  window.changeLanguage = function(lang) {
+   
+    if (isToastActive) return;
+
+    const msg = lang === 'Português' ? 'Idioma alterado para Português' : 'Language changed to English';
+    
+    showToast(msg);
+    
+    if (langMenu) {
+      langMenu.classList.remove('active');
+    }
+  };
+
+  function showToast(message) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    
+    isToastActive = true;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<span>${message}</span>`;
+
+    container.appendChild(toast);
+
+    
+    setTimeout(() => {
+      toast.classList.add('fade-out');
+      
+      setTimeout(() => {
+        toast.remove();
+        
+        isToastActive = false;
+      }, 500);
+    }, 3000);
+  }
+}
+</script>
+
+
+
+<div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2"></div>
 
   </body>
 </html>
