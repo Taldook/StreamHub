@@ -13,12 +13,6 @@
 
 Plataforma de streaming que centraliza filmes e conteúdos em uma única interface moderna, imersiva e inspirada na deusa Hécate.
 
-<!--
-  Adicione aqui depois:
-  ![Preview](./assets/preview.png)
-  ou link do site
--->
-
 </div>
 
 ---
@@ -30,6 +24,31 @@ O **StreamHub: Hécate** é uma plataforma de streaming desenvolvida com foco em
 Inspirado na deusa **Hécate**, símbolo das encruzilhadas, o projeto representa um ponto onde todos os caminhos do entretenimento se encontram.
 
 > Assim como Hécate ilumina os caminhos, o StreamHub guia você pelo universo dos filmes.
+
+---
+
+## 🎥 Player de Filmes (Em Desenvolvimento)
+
+O StreamHub está implementando um **player próprio de vídeos**, pensado para oferecer uma experiência fluida e imersiva.
+
+### ⚡ Objetivos do Player
+
+- Reprodução rápida e estável  
+- Interface limpa e intuitiva  
+- Integração direta com o catálogo  
+- Experiência semelhante a grandes plataformas  
+
+### 🚀 Funcionalidades planejadas
+
+- ▶️ Botão de play/pause personalizado  
+- ⏩ Avançar e retroceder  
+- 🔊 Controle de volume  
+- 📺 Modo tela cheia  
+- ⏱️ Barra de progresso interativa  
+- ⚙️ Futuro suporte a qualidade de vídeo (HD / Full HD)  
+- 💬 Integração com comentários  
+
+> O player será um dos principais diferenciais do StreamHub, focado em desempenho e experiência do usuário.
 
 ---
 
@@ -45,9 +64,9 @@ Inspirado na deusa **Hécate**, símbolo das encruzilhadas, o projeto representa
 ## 🚀 Features
 
 ### 🎥 Conteúdo
-- Player de vídeo integrado  
+- Player de vídeo em desenvolvimento  
 - Catálogo de filmes  
-- Interface de reprodução  
+- Interface de reprodução integrada  
 
 ### 🎨 Interface
 - Layout moderno e responsivo 📱  
@@ -74,6 +93,7 @@ Inspirado na deusa **Hécate**, símbolo das encruzilhadas, o projeto representa
 
 ## 🛠️ Melhorias (v1.0.4)
 
+- Implementação inicial do player de filmes 🎬  
 - Correção do botão de fechar (X)  
 - Otimização de consumo de memória RAM  
 - Ajustes no menu explicativo  
@@ -109,6 +129,7 @@ Novas funcionalidades estão sendo constantemente adicionadas.
 
 ## 💡 Roadmap
 
+- [ ] Finalizar player de vídeo  
 - [ ] Melhorar performance geral  
 - [ ] Expandir catálogo de filmes  
 - [ ] Melhorar sistema de recomendação  
