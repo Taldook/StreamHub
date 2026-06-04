@@ -10,13 +10,40 @@
 
     <style>
         :root {
-            --primary: #8b5cf6;
-            --primary-hover: #7c3aed;
-            --bg-dark: #0b0b0f;
-            --bg-card: #14141c;
-            --bg-nav: #0f0f15;
-            --text-main: #ffffff;
-            --text-dim: #aaa;
+            --cream: #f4ddb5;
+            --cream-soft: #fff2d6;
+            --chocolate: #1d1110;
+            --chocolate-soft: #2a1d18;
+            --caramel: #c69550;
+            --primary: var(--cream);
+            --primary-hover: var(--cream-soft);
+            --primary-contrast: #130b0a;
+            --accent: var(--chocolate);
+            --accent-soft: var(--chocolate-soft);
+            --bg-dark: #170e0d;
+            --bg-card: #261b16;
+            --bg-nav: #1e1311;
+            --text-main: #fff5df;
+            --text-dim: #b99f82;
+            --border-soft: rgba(244, 221, 181, 0.16);
+            --shadow-primary: rgba(244, 221, 181, 0.28);
+            --particle-color: 244, 221, 181;
+        }
+
+        body[data-theme="chocolate"] {
+            --primary: var(--chocolate);
+            --primary-hover: #38231c;
+            --primary-contrast: var(--cream-soft);
+            --accent: var(--cream);
+            --accent-soft: #f7e8c9;
+            --bg-dark: #f4ddb5;
+            --bg-card: #fff0cf;
+            --bg-nav: #edcf9d;
+            --text-main: #1d1110;
+            --text-dim: #6f5943;
+            --border-soft: rgba(29, 17, 16, 0.18);
+            --shadow-primary: rgba(29, 17, 16, 0.2);
+            --particle-color: 29, 17, 16;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,7 +62,8 @@
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark), #151520);
+            background: radial-gradient(circle at top, rgba(var(--particle-color), 0.1), transparent 34%),
+                        linear-gradient(135deg, var(--bg-dark), var(--accent-soft));
             color: var(--text-main);
             display: flex;
             min-height: 100vh;
@@ -48,7 +76,7 @@
             width: 260px;
             background: var(--bg-nav);
             padding: 30px 20px;
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid var(--border-soft);
             position: sticky;
             top: 0;
             height: 100vh;
@@ -67,6 +95,41 @@
             padding-left: 10px;
         }
 
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            margin: -22px 0 28px;
+            padding: 10px;
+            background: rgba(var(--particle-color), 0.08);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+        }
+
+        .menu .theme-toggle button {
+            flex: 1;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+
+        .menu .theme-toggle button:hover {
+            transform: none;
+        }
+
+        .menu .theme-toggle button[aria-pressed="true"] {
+            background: var(--primary);
+            color: var(--primary-contrast);
+            box-shadow: 0 8px 20px var(--shadow-primary);
+            border-color: transparent;
+        }
+
         .menu-group {
             display: flex;
             flex-direction: column;
@@ -79,8 +142,8 @@
             gap: 12px;
             width: 100%;
             padding: 14px 18px;
-            background: #181822;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: rgba(var(--particle-color), 0.06);
+            border: 1px solid var(--border-soft);
             color: var(--text-dim);
             border-radius: 12px;
             cursor: pointer;
@@ -92,17 +155,22 @@
         .menu button i { width: 18px; height: 18px; }
 
         .menu button:hover {
-            background: #232330;
-            color: white;
+            background: rgba(var(--particle-color), 0.12);
+            color: var(--text-main);
             transform: translateX(5px);
             border-color: var(--primary);
         }
 
         .menu button.active {
             background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+            color: var(--primary-contrast);
+            box-shadow: 0 4px 20px var(--shadow-primary);
             border: none;
+        }
+
+        .menu button.back-link-btn {
+            background: rgba(var(--particle-color), 0.08);
+            border-color: var(--border-soft);
         }
 
       
@@ -126,7 +194,7 @@
 
         .search-bar {
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--border-soft);
             padding: 10px 20px;
             border-radius: 10px;
             display: flex;
@@ -138,7 +206,7 @@
         .search-bar input {
             background: none;
             border: none;
-            color: white;
+            color: var(--text-main);
             outline: none;
             width: 100%;
         }
@@ -155,7 +223,7 @@
             background: var(--bg-card);
             padding: 24px;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-soft);
         }
 
         .stat h3 { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
@@ -189,7 +257,7 @@
             background: var(--bg-card);
             border-radius: 18px;
             padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-soft);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             text-decoration: none;
@@ -201,7 +269,7 @@
 
         .card:hover {
             transform: translateY(-10px);
-            background: #1b1b26;
+            background: rgba(var(--particle-color), 0.1);
             border-color: var(--primary);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
@@ -212,7 +280,7 @@
         .news { margin-top: 60px; }
         .news h2 { margin-bottom: 20px; }
         .news-item {
-            background: #181822;
+            background: var(--bg-card);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 15px;
@@ -241,7 +309,7 @@
 .news-item {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #333; 
+    border-bottom: 1px solid var(--border-soft); 
 }
 
 /* Sombra suave no menu lateral */
@@ -254,9 +322,8 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover {
-    /* Glow roxo quando passa o mouse */
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+        .card:hover {
+            box-shadow: 0 20px 40px var(--shadow-primary);
 }
 
 /* Sombra nos mini-cards de estatísticas */
@@ -271,7 +338,7 @@
 }
 
 .search-bar:focus-within {
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 15px var(--shadow-primary);
 }
     </style>
 </head>
@@ -280,6 +347,15 @@
     <nav class="menu">
         <div class="logo">
             <i data-lucide="clapperboard"></i> StreamHub
+        </div>
+
+        <div class="theme-toggle" aria-label="Alternar tema principal">
+            <button type="button" data-theme-choice="cream" aria-pressed="true" title="Creme como cor principal">
+                <i data-lucide="sun"></i> Creme
+            </button>
+            <button type="button" data-theme-choice="chocolate" aria-pressed="false" title="Chocolatado como cor principal">
+                <i data-lucide="moon"></i> Chocolate
+            </button>
         </div>
         
         <div class="menu-group">
@@ -293,7 +369,7 @@
                 <i data-lucide="rocket"></i> Próximos
             </button>
             <a href="https://streamhub-hecate.pages.dev/" style="text-decoration: none;">
-                <button type="button" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+                <button type="button" class="back-link-btn">
                     <i data-lucide="external-link"></i> Voltar ao Início
                 </button>
                 </a>
@@ -307,9 +383,27 @@
       <section class="news">
     <h2><i data-lucide="newspaper" style="vertical-align: middle; margin-right: 10px;"></i> Atualizações</h2>
 
+    <div class="news-item">
+        <div class="news-header">
+            <h4>Nova interface</h4>
+            <span class="news-date">04/06/2026</span>
+        </div>
+        <p>Fiz uma grande atualização no StreamHub! 🚀
+Modifiquei várias coisas, adicionei uma nova interface mais moderna e bonita, incluí diversos filmes e séries e também adicionei um botão de troca de tema no dashboard.
+O projeto está mais completo, intuitivo e agradável de usar.</p>
+    </div>
+
+    <div class="news-item">
+        <div class="news-header">
+            <h4>Novas Funções</h4>
+            <span class="news-date">24/03/2026</span>
+        </div>
+        <p>Atualizei o StreamHub, mudando radicalmente sua interface. Adicionei um banner do filme do Batman e implementei um botão de 'ver avaliação' dentro do modal dos filmes. Ainda não é possível fazer comentários, mas estou trabalhando nisso.</p>
+    </div>
+
      <div class="news-item">
         <div class="news-header">
-            <h4>1.0.4 Atualização</h4>
+            <h4>v1.0.4 Atualização</h4>
             <span class="news-date">09/03/2026</span>
         </div>
         <p>O site passou por uma atualização em sua interface, na parte de Dashboard. O novo design foi planejado para oferecer uma navegação mais fluida e um layout mais organizado, priorizando a eficiência no acesso aos conteúdos. As mudanças já estão aplicadas e visíveis para todos os usuários. </p>
@@ -345,6 +439,22 @@
         lucide.createIcons();
 
         const contentElement = document.getElementById('dynamic-content');
+        const themeButtons = document.querySelectorAll('[data-theme-choice]');
+
+        function applyTheme(theme) {
+            document.body.dataset.theme = theme;
+            localStorage.setItem('streamhub-theme', theme);
+
+            themeButtons.forEach(button => {
+                button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme));
+            });
+        }
+
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => applyTheme(button.dataset.themeChoice));
+        });
+
+        applyTheme(localStorage.getItem('streamhub-theme') || 'cream');
 
         const pages = {
             dashboard: `
@@ -356,17 +466,17 @@
                     </div>
                 </div>
                 <section class="stats">
-                    <div class="stat"><h3>Total de Títulos</h3><p>6</p></div>
+                    <div class="stat"><h3>Total de Títulos</h3><p>37</p></div>
                     <div class="stat"><h3>Mais Popular</h3><p>The Batman</p></div>
                     <div class="stat"><h3>Destaque</h3><p>Star Trek</p></div>
                     <div class="stat"><h3>Status</h3><p><span class="status-dot"></span> Online</p></div>
                 </section>
                 <h2>🔥 Conteúdo em Alta</h2>
                 <div class="grid" id="movieGrid">
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="film"></i><h3>The Batman</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="tv"></i><h3>Jornada nas Estrelas: A Nova Geração</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="smile"></i><h3>Bridesmaids</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="ghost"></i><h3>Invocação do Mal</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Batman: O Cavaleiro das Trevas</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>Interestelar</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="smile"></i><h3>Duna: Parte 2</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="ghost"></i><h3>Stranger Things</h3></a>
                 </div>
             `,
             conteudo: `
@@ -378,23 +488,51 @@
                     </div>
                 </div>
                 <div class="grid" id="movieGrid">
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="film"></i><h3>Os Desaparecidos</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="tv"></i><h3>Jornada nas Estrelas</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="smile"></i><h3>Bridesmaids</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="ghost"></i><h3>Invocação do Mal</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="zap"></i><h3>The Batman</h3></a>
-                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="trophy"></i><h3>Neymar - O Caos Perfeito</h3></a>
+                    <a href="https://ofc-streamhub.web.app/" class="card"><i data-lucide="film"></i><h3>Duna: Parte 2</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Oppenheimer</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Interestelar</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Matrix</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Blade Runner 2049</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Parasita</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>O Poderoso Chefão</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Vingadores: Ultimato</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Batman: O Cavaleiro das Trevas</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Homem-Aranha no Aranhaverso</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Corra!</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Mad Max: Estrada da Fúria</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Coringa</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>A Chegada</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>Stranger Things</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>Breaking Bad</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>O Senhor dos Anéis: O Retorno do Rei</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Whiplash</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>The Last of Us</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>A Origem</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Divertida Mente 2</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Elementos</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>The Batman</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Homem-Aranha: Através do Aranhaverso</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Guardiões da Galáxia Vol. 3</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Pobres Criaturas</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Toy Story 4</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Frozen 2</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Moana</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Shrek 2</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Divertida Mente</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="film"></i><h3>Encanto</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>The Boys</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>Succession</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>Suits</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>Dark</h3></a>
+                    <a href="https://streamhub-streaming.pages.dev/" class="card"><i data-lucide="tv"></i><h3>The Witcher</h3></a>
                 </div>
             `,
             futuros: `
                 <h1 class="titulo">🚀 Em Breve no StreamHub</h1>
                 <div class="grid">
-                    <div class="card"><i data-lucide="calendar"></i><h3>Oppenheimer</h3></div>
-                    <div class="card"><i data-lucide="calendar"></i><h3>Duna: Parte 2</h3></div>
-                    <div class="card"><i data-lucide="calendar"></i><h3>The Last of Us</h3></div>
-                    <div class="card"><i data-lucide="calendar"></i><h3>Breaking Bad</h3></div>
+                    <div class="card"><i data-lucide="calendar"></i><h3>Spider-Noir</h3></div>
                 </div>
-                <button onclick="switchTab('dashboard')" style="margin-top:30px; padding:12px 25px; background:var(--primary); border:none; color:white; border-radius:10px; cursor:pointer; font-weight:bold;">Voltar ao Dashboard</button>
+                <button onclick="switchTab('dashboard')" style="margin-top:30px; padding:12px 25px; background:var(--primary); border:none; color:var(--primary-contrast); border-radius:10px; cursor:pointer; font-weight:bold;">Voltar ao Dashboard</button>
             `
         };
 
@@ -422,7 +560,7 @@
                 lucide.createIcons();
                 
                 
-                document.querySelectorAll('.menu button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.menu-group > button').forEach(btn => btn.classList.remove('active'));
                 document.getElementById(`btn-${tab}`).classList.add('active');
                 
                 
@@ -479,7 +617,8 @@ class Particle {
     }
 
     draw() {
-        ctx.fillStyle = `rgba(139, 92, 246, ${this.opacity})`; // Cor baseada no seu --primary (#8b5cf6)
+        const particleRgb = getComputedStyle(document.body).getPropertyValue('--particle-color').trim();
+        ctx.fillStyle = `rgba(${particleRgb}, ${this.opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();

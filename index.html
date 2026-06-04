@@ -47,14 +47,14 @@
 #customCursor{
   width:18px;
   height:18px;
-  border:2px solid #FFD700;
+  border:2px solid #f5e6c8;
   border-radius:50%;
   position:fixed;
   pointer-events:none;
   transform:translate(-50%, -50%);
   z-index:9999;
   transition: transform 0.08s ease;
-  box-shadow:0 0 10px #FFD700;
+  box-shadow:0 0 10px rgba(245,230,200,0.5);
 }
 
 .animate {
@@ -155,8 +155,217 @@
   transform: scale(0.9) translateY(-10px);
   transition: all 0.4s ease;
 }
+#streamhub-popup.active-popup {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
 
-          </style>
+#btnCopyFinal:hover {
+    background: #c8a96e !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(200, 169, 110, 0.4);
+}
+
+#btnCopyFinal:active {
+    transform: translateY(0);
+}
+/* Botão Base */
+.btn-primary {
+    width: 100% !important;
+    padding: 18px 20px !important;
+    background: linear-gradient(135deg, #f5e6c8 0%, #e8d0a0 100%) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: #1a0e0a !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+    box-shadow: 0 8px 25px rgba(245, 230, 200, 0.25) !important;
+}
+
+/* Hover Normal */
+.btn-primary:not(.is-success):hover {
+    background: linear-gradient(135deg, #fdf0d8 0%, #f5e6c8 100%) !important;
+    filter: saturate(1.2) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(245, 230, 200, 0.35) !important;
+}
+
+/* ESTADO DE SUCESSO (Verde Neon sem bug) */
+.btn-primary.is-success {
+    background: #22c55e !important;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6) !important;
+    filter: saturate(1.5) !important;
+    pointer-events: none; /* Impede o hover de estragar o verde */
+}
+
+/* Garante a setinha */
+.fa-arrow-right:before {
+    content: "\f061" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
+</style>
+
+<!-- ===== TASKITOS THEME ===== -->
+<style>
+/* Taskitos Color Palette:
+   Background:   #1a0f0a  (dark chocolate brown)
+   Surface:      #241510  (card bg)
+   Border:       #3a2218  (subtle border)
+   Text primary: #f5e6c8  (warm cream/beige)
+   Text muted:   #8c7a6a  (muted warm grey)
+   Accent:       #f5e6c8  (cream buttons)
+   Accent hover: #fdf0d8
+*/
+
+:root {
+  --taskitos-bg: #1a0f0a;
+  --taskitos-surface: #241510;
+  --taskitos-border: #3a2218;
+  --taskitos-cream: #f5e6c8;
+  --taskitos-cream-hover: #fdf0d8;
+  --taskitos-muted: #8c7a6a;
+}
+
+/* Base background */
+body,
+.flex.min-h-screen {
+  background-color: var(--taskitos-bg) !important;
+  color: var(--taskitos-cream) !important;
+}
+
+/* Background color overrides for elements using bg-background */
+.bg-background,
+[class*="bg-background"] {
+  background-color: var(--taskitos-bg) !important;
+}
+
+/* Borders */
+[class*="border-hydra-border"],
+.border,
+[class*="border-hydra"] {
+  border-color: var(--taskitos-border) !important;
+}
+
+/* Muted text */
+.text-hydra-muted-foreground,
+[class*="text-hydra-muted"] {
+  color: var(--taskitos-muted) !important;
+}
+
+/* Secondary backgrounds (nav items, feature icons bg, etc) */
+.bg-secondary,
+[class*="bg-secondary"] {
+  background-color: var(--taskitos-surface) !important;
+}
+
+/* Header/nav background */
+[class*="bg-background\/90"],
+[class*="bg-background/90"] {
+  background-color: rgba(26, 15, 10, 0.9) !important;
+}
+
+/* Cards and surface panels */
+.rounded-lg, .rounded-xl, .rounded-2xl {
+  /* applied only when they also carry a background */
+}
+
+/* "Acessar StreamHub" and "Acessar Portfolio" gold buttons → bege */
+a[style*="FFD700"],
+a[style*="FFB300"] {
+  background: linear-gradient(90deg, #f5e6c8, #e8d0a0, #f5e6c8) !important;
+  color: #1a0f0a !important;
+  box-shadow: 0 0 15px rgba(245, 230, 200, 0.3) !important;
+}
+
+/* Feature section top borders */
+.border-t-2 {
+  border-top-color: var(--taskitos-border) !important;
+}
+
+/* Gradient radials at hero - tint to brown */
+.bg-radial {
+  background: radial-gradient(ellipse at center, rgba(90,40,15,0.6) 0%, transparent 70%) !important;
+}
+
+/* The hero bottom gradient */
+.bg-gradient-to-t {
+  --tw-gradient-from: rgba(26,15,10,0.9) !important;
+}
+
+/* Popup/modal bg */
+#streamhub-popup {
+  background: rgba(15, 8, 4, 0.97) !important;
+}
+
+/* Modal inner card */
+#streamhub-popup > div > div:nth-child(2) {
+  background: rgba(30, 17, 10, 0.97) !important;
+  border-color: var(--taskitos-border) !important;
+}
+
+/* Modal title accent */
+#streamhub-popup h1 span {
+  color: var(--taskitos-cream) !important;
+}
+
+/* Modal divider line */
+#streamhub-popup div[style*="linear-gradient(90deg"] {
+  background: linear-gradient(90deg, transparent, var(--taskitos-cream), transparent) !important;
+}
+
+/* Modal input */
+#generated-code-final {
+  background: rgba(30, 15, 8, 0.8) !important;
+  border-color: var(--taskitos-border) !important;
+}
+
+/* Lock icon in modal */
+#streamhub-popup svg[style*="fill: #dc2626"],
+#streamhub-popup svg[style*="fill:#ff0000"] {
+  fill: var(--taskitos-cream) !important;
+}
+
+/* Modal verification box */
+#streamhub-popup div[style*="background: #1a1a20"] {
+  background: var(--taskitos-surface) !important;
+  border-color: var(--taskitos-border) !important;
+}
+
+/* Toast notifications */
+.toast {
+  background: rgba(26, 15, 10, 0.97) !important;
+  border-color: var(--taskitos-border) !important;
+}
+
+/* Language menu dropdown */
+#languageMenu {
+  background-color: #150c06 !important;
+  border-color: var(--taskitos-border) !important;
+}
+
+/* Key icon in language menu */
+.fa-key {
+  color: var(--taskitos-cream) !important;
+}
+
+/* Gradient overlays that fade TO background */
+.bg-gradient-to-r.from-background {
+  background: linear-gradient(to right, var(--taskitos-bg), transparent) !important;
+}
+.bg-gradient-to-l.from-background {
+  background: linear-gradient(to left, var(--taskitos-bg), transparent) !important;
+}
+</style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preload" as="image" href="images/decor/texture-elips.svg" />
@@ -481,50 +690,39 @@
               ><img
                 alt="Stream"
                 loading="lazy"
-                width="40"
+                width="40" 
                 height="40"
                 decoding="async"
                 data-nimg="1"
                 style="color: transparent"
-                src="images/icons/stream.svg"
+                src="images/icons/stream.png"
             /></a>
-            <div class="flex flex-row items-center gap-2">
-<div class="relative">
-  <button
-    id="languageBtn"
-    type="button"
-    class="flex h-10 w-10 items-center justify-center rounded-md border border-hydra-border bg-transparent hover:bg-white/5 transition-colors"
-    aria-label="Toggle language"
-  >
-    <img
-      alt="Language"
-      width="20"
-      height="20"
-      src="images/icons/i18n.svg"
-    />
-  </button>
 
-  <div
-    id="languageMenu"
-    class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max rounded-md border border-hydra-border bg-background p-1 shadow-xl z-50"
-  >
-    <button
-      type="button"
-      class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-muted rounded transition-colors"
-      onclick="changeLanguage('Português')"
-    >
-      Português
+<div class="relative" style="display: inline-block; vertical-align: middle;">
+    <button id="languageBtn" type="button" class="flex h-10 w-10 items-center justify-center rounded-md border border-hydra-border bg-[#101015] hover:bg-white/5 transition-colors" style="cursor: pointer; outline: none;">
+        <img alt="Language" width="18" height="18" src="images/icons/i18n.svg" />
     </button>
 
-    <button
-      type="button"
-      class="block w-full text-left px-4 py-2 text-sm text-white hover:bg-muted rounded transition-colors"
-      onclick="changeLanguage('English')"
-    >
-      English
-    </button>
-  </div>
+    <div id="languageMenu" class="absolute mt-2 rounded-md border border-hydra-border z-[999] opacity-0 pointer-events-none transition-all shadow-2xl" 
+         style="width: 130px; left: 50%; transform: translateX(-50%) translateY(-5px); background-color: #0d0d12 !important; visibility: hidden; padding: 4px;">
+        
+        <button type="button" id="trigger-generator" class="flex w-full h-10 items-center justify-center text-white transition-colors" 
+                style="cursor: pointer; background: transparent !important; border: none !important; outline: none !important; padding: 0; margin: 0; gap: 8px;">
+            <i class="fa-solid fa-key" style="color: #FFD700; font-size: 13px;"></i>
+            <span style="font-size: 10px; font-weight: 300 !important; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; font-family: sans-serif;">Obter Código</span>
+        </button>
+    </div>
 </div>
+
+<style>
+    /* Ativação do menu */
+    #languageMenu.active {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
+        transform: translateX(-50%) translateY(0px) !important;
+    }
+</style>
 
 <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2">
             </div>
@@ -541,7 +739,7 @@
                 decoding="async"
                 data-nimg="1"
                 style="color: transparent"
-                src="images/icons/stream.svg" /></a
+                src="images/icons/stream.png" /></a
             ><button
               class="ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 w-10 border border-hydra-border bg-background/80"
             >
@@ -601,7 +799,7 @@
             >
               <a
                 class="animate ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border-hydra-border hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-full border bg-secondary/50 text-sm font-normal text-hydra-muted-foreground"
-                href="https://github.com/Taldook/StreamHub/releases/tag/1.0.4"
+                href="https://github.com/Taldook/StreamHub/releases/tag/1.0.9"
                 target="_blank"
                 ><img
                   alt="Asterisk"
@@ -632,7 +830,7 @@
                   <a
                   class="animate hover-glimmer ring-offset-background focus-visible:ring-ring items-center justify-center whitespace-nowrap text-sm transition-all duration-300 ease-in-out focus-visible:outline-none md:focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow-md hover:shadow-lg h-12 rounded-md px-6 pointer-events-auto hidden gap-3 font-bold lg:flex"
                   style="background: linear-gradient(90deg, #FFD700, #FFB300, #FFD700); color: black; box-shadow: 0 0 15px rgba(255,215,0,0.6);"
-                  href="https://ofc-streamhub.web.app/"
+                  href="https://streamhub-streaming.pages.dev/"
                   ><img
                     alt="Windows"
                     loading="lazy"
@@ -1613,72 +1811,151 @@ window.addEventListener('pageshow', function(event) {
 });
 </script>
 
-
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Seleção de Elementos
+    const langBtn = document.getElementById('languageBtn');
+    const langMenu = document.getElementById('languageMenu');
+    const triggerBtn = document.getElementById('trigger-generator'); 
+    const popup = document.getElementById('streamhub-popup');
+    const copyBtn = document.getElementById('btnCopyFinal');
+    const inputField = document.getElementById('generated-code-final');
 
-{
-  const langBtn = document.getElementById('languageBtn');
-  const langMenu = document.getElementById('languageMenu');
-  
-  
-  let isToastActive = false;
-
-  if (langBtn && langMenu) {
-    langBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      langMenu.classList.toggle('active');
-    });
-
-    document.addEventListener('click', () => {
-      langMenu.classList.remove('active');
-    });
-
-    langMenu.addEventListener('click', (e) => e.stopPropagation());
-  }
-
-  window.changeLanguage = function(lang) {
-   
-    if (isToastActive) return;
-
-    const msg = lang === 'Português' ? 'Idioma alterado para Português' : 'Language changed to English';
-    
-    showToast(msg);
-    
-    if (langMenu) {
-      langMenu.classList.remove('active');
+    // 2. Lógica do Menu do Globo (Abre/Fecha)
+    if (langBtn && langMenu) {
+        langBtn.onclick = (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('active');
+        };
+        // Fecha o menu se clicar fora dele
+        document.addEventListener('click', () => {
+            if (langMenu.classList.contains('active')) {
+                langMenu.classList.remove('active');
+            }
+        });
     }
-  };
 
-  function showToast(message) {
-    const container = document.getElementById('toast-container');
-    if (!container) return;
+    // 3. Gerar Código e Abrir o Modal
+    if (triggerBtn && popup) {
+        triggerBtn.onclick = (e) => {
+            e.stopPropagation();
+            
+            // Gera um código aleatório de 6 caracteres (Ex: XC8PRO)
+            const randomCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+            
+            if (inputField) {
+                inputField.value = randomCode; // Injeta o código
+                inputField.type = "text";     // Garante que é texto legível
+                inputField.style.color = "white"; // Garante cor branca
+            }
 
-    
-    isToastActive = true;
+            // Ativa o modal e fecha o menu do globo
+            popup.classList.add('active-popup');
+            if (langMenu) langMenu.classList.remove('active');
+        };
+    }
 
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `<span>${message}</span>`;
+    // 4. Lógica de Copiar Código (Versão Anti-Bug/Anti-Piscada)
+    if (copyBtn && inputField) {
+        copyBtn.onclick = () => {
+            if (inputField.value !== "" && inputField.value !== "Gerando código...") {
+                
+                // Seleciona e Copia
+                inputField.select();
+                inputField.setSelectionRange(0, 99999); // Mobile
+                
+                navigator.clipboard.writeText(inputField.value).then(() => {
+                    const span = copyBtn.querySelector('.btn-text');
+                    const icon = copyBtn.querySelector('i');
+                    const originalText = span.innerText;
+                    
+                    // A MÁGICA: Adiciona a classe de sucesso (Verde Neon)
+                    // Isso impede o CSS de aplicar o hover vermelho e bugar
+                    copyBtn.classList.add('is-success');
+                    span.innerText = "COPIADO!";
+                    
+                    // Troca a setinha pelo check de sucesso
+                    if (icon) icon.className = "fa-solid fa-check";
 
-    container.appendChild(toast);
-
-    
-    setTimeout(() => {
-      toast.classList.add('fade-out');
-      
-      setTimeout(() => {
-        toast.remove();
-        
-        isToastActive = false;
-      }, 500);
-    }, 3000);
-  }
-}
+                    // Espera 1 segundo para o usuário ver o verde e fecha
+                    setTimeout(() => {
+                        popup.classList.remove('active-popup');
+                        
+                        // Reseta o botão para o estado original DEPOIS que o modal fechar
+                        setTimeout(() => {
+                            copyBtn.classList.remove('is-success');
+                            span.innerText = originalText;
+                            if (icon) icon.className = "fa-solid fa-arrow-right";
+                        }, 400);
+                        
+                    }, 1000);
+                }).catch(err => {
+                    console.error('Erro ao copiar: ', err);
+                });
+            }
+        };
+    }
+});
 </script>
 
 
-
 <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2"></div>
+
+<div id="streamhub-popup" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div style="width: 100%; max-width: 450px; padding: 20px; display: flex; flex-direction: column; align-items: center;">
+      
+        <div style="width: 100%; text-align: center; margin-bottom: 25px;">
+            <h1 style="color: white; font-size: 2.2rem; font-weight: 800; margin: 0; letter-spacing: -1px;">StreamHub <span style="color: #ff0000;">Hécate</span></h1>
+            <p style="color: #949090; font-size: 14px; margin: 5px 0 15px 0;">Sua plataforma StreamHub</p>
+            <div style="width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #ff0000, transparent);"></div>
+        </div>
+
+       <div style="width: 100%; 
+                    background: rgba(18, 18, 22, 0.95) !important; /* Quase nada transparente */
+                    backdrop-filter: blur(20px); 
+                    border: 1px solid rgba(255, 255, 255, 0.05); 
+                    border-radius: 24px; 
+                    padding: 90px 45px; 
+                    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.95); 
+                    transition: all 0.3s ease;">
+            
+      <div style="margin-bottom: 35px;">
+                <label class="ra-main-label" style="color: #888 !important; font-size: 11px; font-weight: 600; display: block; margin-bottom: 12px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
+                    <svg style="width: 14px; height: 14px; fill: #dc2626 !important;" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M528 160H48V96c0-17.67 14.33-32 32-32h320c17.67 0 32 14.33 32 32zm0 64v192c0 17.67-14.33 32-32 32H80c-17.67 0-32-14.33-32-32V224zm-144 64H112a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h272a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm-48 64H112a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h208a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z"/>
+                    </svg>
+                    <span>Código para Acessar</span>
+                </label>
+                
+                <div class="input-wrapper" style="position: relative; width: 100%;">
+                    <input type="text" id="generated-code-final" placeholder="Gerando código..." readonly
+                           style="width: 100%; padding: 14px 16px; background: rgba(20, 20, 28, 0.8); border: 1px solid rgba(60, 60, 80, 0.5); border-radius: 12px; color: white; font-size: 0.95rem; outline: none; text-align: center; font-weight: bold; letter-spacing: 2px;">
+                </div>
+            </div>
+
+  <div style="background: #1a1a20; border: 1px solid #25252b; padding: 12px; border-radius: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 25px; color: #888; font-size: 13px;">
+    
+    <svg style="width: 14px; height: 14px; fill: #ff0000;" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
+    </svg>
+    
+    <span style="font-weight: 500;">Verificação Completa</span>
+
+    <i class="fa-solid fa-circle-check" style="color: #22c55e; font-size: 14px;"></i> 
+</div>
+
+          <button id="btnCopyFinal" class="btn-primary" type="button">
+    <span class="btn-text">Copiar</span>
+    <div class="btn-shine"></div>
+</button>
+        </div>
+
+        <button onclick="document.getElementById('streamhub-popup').classList.remove('active-popup')" 
+                style="margin-top: 25px; background: transparent; border: none; color: #807e7e; font-size: 11px; font-weight: 600; letter-spacing: 2px; cursor: pointer; text-transform: uppercase;">
+            [ Fechar Janela ]
+        </button>
+    </div>
+</div>
 
   </body>
 </html>
