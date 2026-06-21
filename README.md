@@ -4,7 +4,7 @@
 
 **A encruzilhada do seu entretenimento**
 
-[![Version](https://img.shields.io/badge/version-1.0.9-purple)]()
+[![Version](https://img.shields.io/badge/version-1.0.0-purple)]()
 [![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)]()
 [![Firebase](https://img.shields.io/badge/Firebase-Hosting-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
 [![HTML](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white)]()
