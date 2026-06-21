@@ -6,7 +6,7 @@
 
 [![Version](https://img.shields.io/badge/version-1.0.0-purple)]()
 [![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)]()
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-Pages-F38020?logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
+[![Cloudflare](https://img.shields.io/badge/Cloudflare-Hosting-FFFF00?logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 [![HTML](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white)]()
 [![CSS](https://img.shields.io/badge/CSS-3-1572B6?logo=css3&logoColor=white)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=black)]()
