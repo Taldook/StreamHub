@@ -91,7 +91,7 @@ O StreamHub está implementando um **player próprio de vídeos**, pensado para 
 
 ---
 
-## 🛠️ Melhorias (v1.0.4)
+## 🛠️ Melhorias (v1.0.1)
 
 - Implementação inicial do player de filmes 🎬  
 - Correção do botão de fechar (X)  
