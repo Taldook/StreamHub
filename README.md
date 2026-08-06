@@ -4,7 +4,7 @@
 
 **A encruzilhada do seu entretenimento**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-purple)]()
+[![Version](https://img.shields.io/badge/version-1.0.1-purple)]()
 [![Status](https://img.shields.io/badge/status-em%20desenvolvimento-orange)]()
 [![Cloudflare](https://img.shields.io/badge/Cloudflare-Hosting-FFFF00?logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 [![HTML](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white)]()
@@ -74,7 +74,7 @@ O StreamHub está implementando um **player próprio de vídeos**, pensado para 
 
 ---
 
-## 🛠️ Melhorias (v1.0.0)
+## 🛠️ Melhorias (v1.0.1)
 
 - Implementação inicial do player de filmes 🎬  
 - Correção do botão de fechar (X)  
