@@ -120,7 +120,7 @@ Novas funcionalidades estão sendo constantemente adicionadas.
 
 ## 📦 Instalação
 
-1. Baixe o [instalador mais recente](https://github.com/Taldook/StreamHub/releases/download/v1.0.0/StreamOS_Setup.exe).
+1. Baixe o [instalador mais recente](https://github.com/Taldook/StreamHub/releases/download/v1.0.1/StreamOS_Setup.exe).
 2. Execute `StreamOS_Setup.exe`.
 3. Conclua o assistente de instalação.
 4. Abra o StreamHub e comece a assistir.
